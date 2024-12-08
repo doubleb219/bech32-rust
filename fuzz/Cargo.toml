@@ -1,0 +1,42 @@
+[package]
+name = "bech32-fuzz"
+edition = "2021"
+rust-version = "1.56.1"
+version = "0.0.1"
+authors = ["Automatically generated"]
+publish = false
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+honggfuzz = { version = "0.5.55", default-features = false }
+bech32 = { path = ".." }
+
+# Prevent this from interfering with workspaces
+[workspace]
+members = ["."]
+
+[[bin]]
+name = "berlekamp_massey"
+path = "fuzz_targets/berlekamp_massey.rs"
+
+[[bin]]
+name = "correct_bech32"
+path = "fuzz_targets/correct_bech32.rs"
+
+[[bin]]
+name = "correct_codex32"
+path = "fuzz_targets/correct_codex32.rs"
+
+[[bin]]
+name = "decode_rnd"
+path = "fuzz_targets/decode_rnd.rs"
+
+[[bin]]
+name = "encode_decode"
+path = "fuzz_targets/encode_decode.rs"
+
+[[bin]]
+name = "parse_hrp"
+path = "fuzz_targets/parse_hrp.rs"
